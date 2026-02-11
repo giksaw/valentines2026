@@ -1,6 +1,9 @@
 import './style.css';
 import { initHero } from './components/hero.js';
 import { initStory } from './components/story.js';
+import { initAudio } from './components/audio.js';
+import { initTimer } from './components/timer.js';
+import { initUI } from './components/ui.js';
 
 // ─── Build the HTML ────────────────────────
 document.querySelector('#app').innerHTML = `
@@ -31,7 +34,8 @@ document.querySelector('#app').innerHTML = `
     </div>
     <div class="header-nav">
       <button class="music-btn" id="music-toggle">
-        🎵 VALENTINE.MP3
+        <span class="text">VALENTINE.MP3</span>
+        🎵
       </button>
     </div>
   </header>
@@ -139,7 +143,67 @@ document.querySelector('#app').innerHTML = `
       <div style="position:absolute; bottom:25%; right:25%; width:16rem; height:16rem; background:rgba(238,43,75,0.2); border-radius:50%; filter:blur(100px); pointer-events:none;"></div>
     </section>
 
-    <!-- ═══════ SECTION 4: REASONS I LOVE YOU ═══════ -->
+    <!-- ═══════ SECTION 3: OUR JOURNEY (TIMER) ═══════ -->
+    <section class="section-timer" id="timer-section">
+      <div class="timer-content reveal-text">
+        <h2>We've Been In Love For...</h2>
+        <div id="timer-container" class="timer-grid">
+          <div class="timer-box"><span id="t-years">0</span><label>Years</label></div>
+          <div class="timer-box"><span id="t-days">0</span><label>Days</label></div>
+          <div class="timer-box"><span id="t-hours">0</span><label>Hours</label></div>
+          <div class="timer-box"><span id="t-minutes">0</span><label>Mins</label></div>
+          <div class="timer-box"><span id="t-seconds">0</span><label>Secs</label></div>
+        </div>
+        <p>...and every second has been magic. ✨</p>
+      </div>
+    </section>
+
+    <!-- ═══════ SECTION 4: MEMORY LANE (GALLERY) ═══════ -->
+    <section class="section-gallery" id="gallery">
+      <h2 class="reveal-text">Our <span class="highlight">Memory Lane</span></h2>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="https://picsum.photos/400/600?random=1" alt="Memory"></div>
+        <div class="gallery-item"><img src="https://picsum.photos/400/400?random=2" alt="Memory"></div>
+        <div class="gallery-item"><img src="https://picsum.photos/400/500?random=3" alt="Memory"></div>
+        <div class="gallery-item"><img src="https://picsum.photos/400/450?random=4" alt="Memory"></div>
+        <div class="gallery-item"><img src="https://picsum.photos/400/550?random=5" alt="Memory"></div>
+        <div class="gallery-item"><img src="https://picsum.photos/400/400?random=6" alt="Memory"></div>
+      </div>
+    </section>
+
+    <!-- ═══════ SECTION 5: BUCKET LIST & LOVE NOTE ═══════ -->
+    <section class="section-interactive">
+      <!-- Bucket List -->
+      <div class="bucket-list glass-card reveal-text">
+        <h3>Our Bucket List 🌍</h3>
+        <ul class="bucket-items">
+          <li class="bucket-item"><span>✈️</span> See the Northern Lights</li>
+          <li class="bucket-item"><span>🐶</span> Adopt a Puppy</li>
+          <li class="bucket-item"><span>🍝</span> Learn to Cook Pasta in Italy</li>
+          <li class="bucket-item"><span>🏡</span> Build Our Dream Home</li>
+          <li class="bucket-item"><span>💍</span> Grow Old Together</li>
+        </ul>
+      </div>
+
+      <!-- Love Note Envelope -->
+      <div class="envelope-wrapper reveal-text">
+        <div class="envelope">
+          <div class="front flap"></div>
+          <div class="front pocket"></div>
+          <div class="letter">
+            <div class="letter-content">
+              <p>My Dearest,</p>
+              <p>You are the finest, loveliest, tenderest, and most beautiful person I have ever known—and even that is an understatement.</p>
+              <p>Happy Valentine's Day! ❤️</p>
+            </div>
+          </div>
+          <div class="heart-seal">❤️</div>
+        </div>
+        <p class="click-hint">(Click to Open)</p>
+      </div>
+    </section>
+
+    <!-- ═══════ SECTION 6: REASONS I LOVE YOU ═══════ -->
     <section class="section-reasons" id="reasons">
       <!-- Background bokeh -->
       <div class="bokeh" style="top:-10%; left:-10%; width:24rem; height:24rem; background:rgba(238,43,75,0.2);"></div>
@@ -250,6 +314,9 @@ document.querySelector('#app').innerHTML = `
 // ─── Initialize ────────────────────────
 initHero();
 initStory();
+initAudio();
+initTimer('2024-02-14'); // Replace with your actual start date
+initUI();
 
 // ─── Hide scroll indicator on scroll ────────────────────────
 const scrollInd = document.getElementById('scroll-indicator');
